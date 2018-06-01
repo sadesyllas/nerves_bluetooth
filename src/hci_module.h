@@ -12,16 +12,18 @@
 #define LOG(fmt, ...)
 #endif
 
+#include "global.h"
+
 /* Logging function, not part of the API */
 void flog(const char *fmt, ...);
 
-/* hci_init() 
+/* hci_init()
  * Opens the HCI Socket for the Bluetooth Controller
  * returns: true if no problem occurs
  */
 bool hci_init();
 
-/* hci_close() 
+/* hci_close()
  * Closes the HCI Socket for the Bluetooth Controller
  * returns: 0 if no problem occurs
  */
@@ -30,10 +32,10 @@ int hci_close();
 /* hci_dev_id_for()
  * Resolves the devices ID, depending on the device state.
  */
-int hci_dev_id_for(int* p_dev_id, bool is_up);   
+int hci_dev_id_for(int* p_dev_id, bool is_up);
 
 /* hci_is_dev_up
- * Is the current device already up? 
+ * Is the current device already up?
  */
 bool hci_is_dev_up();
 
@@ -56,10 +58,10 @@ int hci_set_filter(byte *data, int size);
 int hci_foo(int x);
 
 
-/** 
- * I am not sure about this function. But it is part of the HCI_RAW_CHANNEL code in Noble and 
- * is always called after a positive read. Since my own version blocks after a positive read, 
- * it might be that Linux kernel has some problems and which are adressed here. 
+/**
+ * I am not sure about this function. But it is part of the HCI_RAW_CHANNEL code in Noble and
+ * is always called after a positive read. Since my own version blocks after a positive read,
+ * it might be that Linux kernel has some problems and which are adressed here.
  */
 void kernelDisconnectWorkArounds(int length, char* data);
 
